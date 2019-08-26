@@ -28,14 +28,12 @@ matrix:
             - lcov
             - valgrind
             - doxygen
+            - python3
       env:
         - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
 
 language: cpp
 compiler: gcc
-
-python:
-  - "3.6"
 
 before_install:
   - eval "${MATRIX_EVAL}"
@@ -57,13 +55,13 @@ script:
   - cd ..
   - ./run_doxygen.sh
 
-deploy:
-  provider: pages
-  skip_cleanup: true
-  local_dir: html
-  github_token: $GH_PAGES_TOKEN
-  on:
-    branch: master
+# deploy:
+#   provider: pages
+#   skip_cleanup: true
+#   local_dir: html
+#   github_token: $GH_PAGES_TOKEN
+#   on:
+#     branch: master
 
 after_success:
   - lcov --directory . --capture --output-file coverage.info # capture coverage info
