@@ -22,7 +22,7 @@ matrix:
           packages:
             - lib32z1
             - lib32ncurses5
-            - lib32bz2-1.0
+            - libbz2
             - gcc-arm-embedded
             - g++-7
             - lcov
